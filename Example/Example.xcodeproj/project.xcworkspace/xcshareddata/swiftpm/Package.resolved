@@ -1,0 +1,15 @@
+{
+  "originHash" : "6c205eb0009c14e66b8df7bfca9b89f6d552513340df4df761460547fed73fa4",
+  "pins" : [
+    {
+      "identity" : "bluruikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TimOliver/BlurUIKit",
+      "state" : {
+        "revision" : "235de46a35bae4f5f7bf905831969277b4e7d2aa",
+        "version" : "1.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}
