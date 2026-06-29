@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// A modifier that applies FluidHeader's position, scale, blur, and opacity
+/// effects to a view as it moves through a scroll view.
+///
+/// You normally apply this modifier with ``SwiftUICore/View/fluidHeader()`` rather
+/// than creating it directly.
 public struct FluidHeaderModifier: ViewModifier {
     @Environment(\.fluidHeaderScrollSensitivity)
     private var scrollSensitivity: CGFloat
@@ -26,6 +31,7 @@ public struct FluidHeaderModifier: ViewModifier {
     @Environment(\.fluidHeaderOpacityHeight)
     private var opacityHeight: CGFloat
 
+    /// Applies the configured fluid header effects to `content`.
     public func body(content: Content) -> some View {
         content
             .visualEffect {
@@ -65,6 +71,25 @@ public struct FluidHeaderModifier: ViewModifier {
 }
 
 extension View {
+    /// Applies stretchy header behavior based on the view's position in its
+    /// nearest scroll view.
+    ///
+    /// Use this modifier when an existing view should act as the header. For a
+    /// container-style API, use ``FluidHeader``.
+    ///
+    /// ```swift
+    /// ScrollView {
+    ///     Image("Landscape")
+    ///         .resizable()
+    ///         .scaledToFill()
+    ///         .frame(height: 320)
+    ///         .fluidHeader()
+    ///
+    ///     ArticleContent()
+    /// }
+    /// ```
+    ///
+    /// - Returns: A view that responds to scrolling with FluidHeader effects.
     public func fluidHeader() -> some View {
         self
             .modifier(FluidHeaderModifier())
